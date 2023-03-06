@@ -3,22 +3,14 @@ import "../styles/TodoItem.css";
 
 const TodoItem = (props) => {
 
-  const onComplete = () => {
-    alert(`Se completo la tarea ${props.text}`)
-  }
-
-  const onDelete = () => {
-    alert(`Se elimino la tarea ${props.text}`)
-  }
-
   return (
     <li className="TodoItem">
-        <div className="check-container">
-      <span className="check" onClick={onComplete}>✓</span>
+        <div className={`check-container ${props.completed && 'completed'}`}>
+      <span className={`check ${props.completed && 'completed'}`} onClick={props.onComplete}>✓</span>
         </div>
-      <p className="todo">{props.text}</p>
+      <p className={`todo ${props.completed && 'completed'}`}>{props.text}</p>
       <div className="closer-container">
-      <span className="closer" onClick={onDelete}>X</span>
+      <span className="closer" onClick={props.onDelete}>X</span>
       </div>
     </li>
   );
